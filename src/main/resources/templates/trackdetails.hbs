@@ -1,0 +1,17 @@
+{{#partial "content"}}
+
+    <p>Title</p>
+
+    <p>{{ track.title }}</p>
+    <h5>Genre:</h5>
+    <p> {{ track.genre }}</p>
+    <h5>Length:</h5>
+    <p>{{ track.length }}</p>
+    <p>
+        <a href="/track/update">Edit this task</a><br>
+        <a href="/artists/{{track.artistId}}/tracks/{{track.id}}/delete">DELETE this task (no undo)</a>
+    </p>
+
+{{/partial}}
+
+{{> layout.hbs}}
