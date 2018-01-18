@@ -1,0 +1,17 @@
+{{#partial "content"}}
+
+    <h2>List of Tracks</h2>
+    <h4>Click a track to view genre, and duration.</h4>
+
+    {{#if tracks}}
+        {{#each tracks}}
+            <p><a href="/tracks/{{id}}">{{ title }}</a></p>
+        {{/each}}
+    {{else}}
+        <p id="no-tracks">No teams currently registered.</p>
+    {{/if}}
+
+
+{{/partial}}
+
+{{> layout.hbs}}
