@@ -24,6 +24,7 @@ public class Sql2oArtistDaoTest {
         String connectionString = "jdbc:h2:mem:testing;INIT=RUNSCRIPT from 'classpath:db/create.sql'";
         Sql2o sql2o = new Sql2o(connectionString, "", "");
         artistDao = new Sql2oArtistDao(sql2o); //ignore me for now
+        trackDao = new Sql2oTrackDao(sql2o);
 
         //keep connection open through entire test so it does not get erased.
         conn = sql2o.open();
@@ -98,7 +99,7 @@ public class Sql2oArtistDaoTest {
     }
 
     @Test
-    public void getAllTracksByArtistsReturnsCorrectly() throws Exception {
+    public void getAllTracksByArtistsReturnsCorrectly() {
         Artist artist = setupNewArtist();
         artistDao.add(artist);
         int artistId = artist.getId();
@@ -109,6 +110,10 @@ public class Sql2oArtistDaoTest {
         trackDao.add(secondTrack);
 
         assertTrue(artistDao.getAllTracksByArtist(artistId).size()==2);
+        assertTrue(artistDao.getAllTracksByArtist(artistId).contains(newTrack));
+        assertTrue(artistDao.getAllTracksByArtist(artistId).contains(secondTrack));
+
+
 
 
 

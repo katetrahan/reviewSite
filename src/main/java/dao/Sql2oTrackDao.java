@@ -15,7 +15,7 @@ public class Sql2oTrackDao implements TrackDao {
 
     @Override
     public void add(Track track) {
-        String sql = "INSERT INTO tracks(title, genre, length) VALUES (:title, :genre, :length)";
+        String sql = "INSERT INTO tracks(title, genre, length, artistId) VALUES (:title, :genre, :length, :artistId)";
         try (Connection con = sql2o.open()) {
             int id = (int) con.createQuery(sql)
                     .bind(track)

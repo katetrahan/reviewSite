@@ -31,10 +31,10 @@ public class Sql2oTrackDaoTest {
     }
 
     public Track setupNewTrack() {
-        return new Track("A song", "Music", 3.10);
+
+        return new Track("A song", "Music", 3.10, 1);
     }
 
-    @Test
     public void newTrack_generatesUniqueId_1() throws Exception {
         Track track = setupNewTrack();
         int originalTrackId = track.getId();
@@ -64,7 +64,7 @@ public class Sql2oTrackDaoTest {
     @Test
     public void updateChangesTitle() throws Exception {
         String initialTitle = "A song";
-        Track track = new Track (initialTitle, "music", 3.50);
+        Track track = new Track (initialTitle, "music", 3.50, 1);
         trackDao.add(track);
         trackDao.update(track.getId(), "Another Song", 1);
         Track updatedTrack = trackDao.findTrackById(track.getId());
@@ -82,7 +82,7 @@ public class Sql2oTrackDaoTest {
     @Test
     public void clearAllTracksClearsAll() throws Exception {
         Track track = setupNewTrack();
-        Track otherTrack = new Track("Song", "Music", 2.5);
+        Track otherTrack = new Track("Song", "Music", 2.5, 1);
         trackDao.add(track);
         trackDao.add(otherTrack);
         int daoSize = trackDao.getAll().size();

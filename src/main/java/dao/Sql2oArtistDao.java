@@ -31,7 +31,7 @@ public class Sql2oArtistDao implements ArtistDao{
     public List<Artist> getAll() {
         String sql = "SELECT * FROM artists";
         try (Connection con = sql2o.open()) {
-            return con.createQuery(sql)
+            return con.createQuery("SELECT *FROM artists")
                     .executeAndFetch(Artist.class);
         }
     }
@@ -83,7 +83,7 @@ public class Sql2oArtistDao implements ArtistDao{
     }
 
     @Override
-    public List<Track> getAllTracksByArtist(int artistId)  throws Exception {
+    public List<Track> getAllTracksByArtist(int artistId){
         try(Connection con = sql2o.open()) {
             return con.createQuery("SELECT * FROM tracks WHERE artistId = :artistId")
                     .addParameter("artistId", artistId)

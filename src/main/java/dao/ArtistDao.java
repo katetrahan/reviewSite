@@ -13,7 +13,7 @@ public interface ArtistDao {
 
     //read
     List<Artist> getAll();
-    List<Track> getAllTracksByArtists(int artistId);
+    List<Track> getAllTracksByArtist(int artistId);
 
     Artist findById(int id);
 
