@@ -1,0 +1,32 @@
+{{#partial "content"}}
+
+    {{#if artists}}
+        <form action="/tracks/new" method="post">
+            <label for="title">Title</label>
+            <input id="title" name="title" type="text">
+
+            <label for="genre">Genre</label>
+            <input id="genre" name="genre" type="text">
+
+            <label for="length">Length</label>
+            <input id="length" name="length" type="number">
+
+
+            <label for="artistId">This track is by:</label>
+
+            <select id="artistId" name="artistId">
+
+                    {{#each artists}}
+                        <option value="{{id}}">{{name}}</option>
+                    {{/each}}
+                </select>
+                <p>Don't see the right category?<a href="/tracks/new">Add a new one first.</a></p>
+        {{else}}
+                <h3>You'll need to add a category before you can add a task. <a href="/tracks/new">Add one here.</a> </h3>
+        {{/if}}
+        <button type="submit" class="btn btn-default">Go!</button>
+    </form>
+
+{{/partial}}
+
+{{> layout.hbs}}

@@ -30,6 +30,10 @@ public class App {
         // homepage
         get("/",(request, response) -> {
             Map<String, Object> model = new HashMap<>();
+            List<Artist> allArtists = artistDao.getAll();
+            model.put("artists", allArtists);
+            List<Track> allTracks = trackDao.getAll();
+            model.put("tracks", allTracks);
             return new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
 
@@ -64,8 +68,11 @@ public class App {
 
         // /tracks/new
         //get form
-        get("tracks/new", ((request, response) -> {
+        get("tracks/new", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
+            List<Artist> allArtists = artistDao.getAll();
+            model.put("artists", allArtists);
+
             return new ModelAndView(model, "trackform.hbs");
         }, new HandlebarsTemplateEngine());
 
@@ -78,7 +85,7 @@ public class App {
             int artistId = Integer.parseInt(request.queryParams("artistId"));
             Track newTrack = new Track(title, genre, length, artistId);
             trackDao.add(newTrack);
-            return new ModelAndView(model, "trackform.hbs");
+            return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
 
         // ===========artists========== //
@@ -100,12 +107,12 @@ public class App {
 
 
         //post form
-        post("/artist/new", (request, response) -> {
+        post("/artists/new", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             String name = request.queryParams("name");
             Artist newArtist = new Artist (name);
             artistDao.add(newArtist);
-            return new ModelAndView(model, "artistform.hbs");
+            return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
 
 

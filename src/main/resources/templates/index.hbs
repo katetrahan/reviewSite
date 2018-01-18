@@ -1,9 +1,9 @@
 {{#partial "content"}}
 
-    <h1> List o' stuff to do!</h1>
+    <h1>Music Review</h1>
 
     {{#if tracks}}
-        {{#each tracks }}
+        {{#each tracks}}
             <p>Current task:</p>
             <p>{{ title }} <a href="/artists/{{artistId}}/tracks/{{id}}">read more...</a></p>        {{/each}}
     {{else}}
