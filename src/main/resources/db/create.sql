@@ -6,3 +6,8 @@ CREATE TABLE IF NOT EXISTS tracks (
  genre VARCHAR,
  length FLOAT(2)
  );
+
+CREATE TABLE IF NOT EXISTS artists (
+ id int PRIMARY KEY auto_increment,
+ name VARCHAR
+ );

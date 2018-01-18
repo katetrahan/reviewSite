@@ -5,11 +5,13 @@ public class Track {
     private String genre;
     private Double length;
     private int id;
+    private int artistId;
 
-    public Track(String title, String genre, Double length) {
+    public Track(String title, String genre, Double length, int artistId) {
         this.title = title;
         this.genre = genre;
         this.length = length;
+        this.artistId = artistId;
     }
 
     public String getTitle() {
@@ -44,6 +46,14 @@ public class Track {
         this.id = id;
     }
 
+    public int getArtistId() {
+        return artistId;
+    }
+
+    public void setArtistId(int artistId) {
+        this.artistId = artistId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -52,6 +62,7 @@ public class Track {
         Track track = (Track) o;
 
         if (id != track.id) return false;
+        if (artistId != track.artistId) return false;
         if (!title.equals(track.title)) return false;
         if (genre != null ? !genre.equals(track.genre) : track.genre != null) return false;
         return length != null ? length.equals(track.length) : track.length == null;
@@ -63,6 +74,7 @@ public class Track {
         result = 31 * result + (genre != null ? genre.hashCode() : 0);
         result = 31 * result + (length != null ? length.hashCode() : 0);
         result = 31 * result + id;
+        result = 31 * result + artistId;
         return result;
     }
 }

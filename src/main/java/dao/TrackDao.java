@@ -21,8 +21,4 @@ public interface TrackDao {
     //delete
     void deleteById(int id);
     void clearAllTracks();
-
-
-
-
 }
