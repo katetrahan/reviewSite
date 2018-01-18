@@ -12,6 +12,17 @@ public interface TrackDao {
 
     //read
     List<Track> getAll();
-    List<Track> getAll
+
+    Track findTrackById(int id);
+
+    //update
+    void update(int id, String title, int artistId);
+
+    //delete
+    void deleteById(int id);
+    void clearAllTracks();
+
+
+
 
 }

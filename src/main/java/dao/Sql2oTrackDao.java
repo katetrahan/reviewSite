@@ -36,4 +36,50 @@ public class Sql2oTrackDao implements TrackDao {
                     .executeAndFetch(Track.class);
         }
     }
+
+    @Override
+    public Track findTrackById(int id) {
+        String sql = "SELECT * FROM tracks WHERE id = :id";
+        try (Connection con = sql2o.open()) {
+            return con.createQuery(sql)
+                    .addParameter("id", id)
+                    .executeAndFetchFirst(Track.class);
+        }
+    }
+
+    @Override
+    public void update(int id, String newTitle, int artistId) {
+        String sql = "UPDATE tracks SET title = :title WHERE id = :id";
+        try(Connection con = sql2o.open()) {
+            con.createQuery(sql)
+                    .addParameter("title", newTitle)
+                    .addParameter("id", id)
+                    .executeUpdate();
+        } catch (Sql2oException ex) {
+            System.out.println(ex);
+        }
+    }
+
+    @Override
+    public void deleteById(int id) {
+        String sql = "DELETE from tracks WHERE id= :id";
+        try(Connection con = sql2o.open()) {
+            con.createQuery(sql)
+                    .addParameter("id", id)
+                    .executeUpdate();
+        } catch (Sql2oException ex) {
+            System.out.println(ex);
+        }
+    }
+
+    @Override
+    public void clearAllTracks() {
+        String sql = "DELETE from tracks";
+        try (Connection con = sql2o.open()){
+            con.createQuery(sql)
+                    .executeUpdate();
+        } catch (Sql2oException ex) {
+            System.out.println(ex);
+        }
+    }
 }
