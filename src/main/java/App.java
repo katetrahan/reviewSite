@@ -139,9 +139,35 @@ public class App {
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
 
+//        //get: show a form to update
+//        get("/artists/update", (req, res) -> {
+//            Map<String, Object> model = new HashMap<>();
+//
+//            List<Artist> allArtists = artistDao.getAll();
+//            model.put("artists", allArtists);
+//
+////            List<Task> allTasks = taskDao.getAll();
+////            model.put("tasks", allTasks);
+//
+//            model.put("editArtists", true);
+//            return new ModelAndView(model, "artistform.hbs");
+//        }, new HandlebarsTemplateEngine());
 
+        //post:process a form to update an artist
 
-
+//        post("artists/update", (request, response) -> {
+//            Map<String, Object> model = new HashMap<>();
+//
+//            List<Artist> allArtists = artistDao.getAll();
+//            model.put("artists", allArtists);
+//
+//            String newContent = request.queryParams("name");
+//            int idOfArtisttoEdit = Integer.parseInt(request.queryParams("artistId"));
+//            Artist editArtist = artistDao.findById(idOfArtisttoEdit);
+//            artistDao.update(idOfArtisttoEdit, newContent);
+//
+//            return new ModelAndView(model, "success.hbs");
+//        }, new HandlebarsTemplateEngine());
 
 
 
